@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>be.rubus.jaxrs.secure.workshop</groupId>
-    <artifactId>jwt</artifactId>
+    <artifactId>jwk</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>jwt</name>
+    <name>jwk</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

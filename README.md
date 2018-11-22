@@ -5,3 +5,4 @@ Cookbook and final solutions of Secure JAX-RS workshop.
 - rsa-enc : Encryption with RSA keys
 - rsa-sign : Signature with RSA keys
 - jwt : Using JWT
+- jwk : reading and writing JWK files
