@@ -6,3 +6,4 @@ Cookbook and final solutions of Secure JAX-RS workshop.
 - rsa-sign : Signature with RSA keys
 - jwt : Using JWT
 - jwk : reading and writing JWK files
+- verify-user : User identification with JWT (Large example)
