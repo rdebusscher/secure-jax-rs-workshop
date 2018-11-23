@@ -7,3 +7,4 @@ Cookbook and final solutions of Secure JAX-RS workshop.
 - jwt : Using JWT
 - jwk : reading and writing JWK files
 - verify-user : User identification with JWT (Large example)
+- http-signature : Http signature to protect content changes (Large example)
