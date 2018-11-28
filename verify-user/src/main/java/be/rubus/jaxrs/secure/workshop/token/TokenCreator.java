@@ -55,8 +55,9 @@ public class TokenCreator {
                 .add("userName", user.getUserName())
                 .add("name", user.getName())
                 // The following are OpenIdConnect compliant claims.
-                .add("iat", now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()) // issued at
-                .add("exp", exp.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()) // expiration
+                // iat and exp are in seconds, not milliseconds (spec requirement)
+                .add("iat", now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() / 1000) // issued at
+                .add("exp", exp.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() / 1000) // expiration
                 .add("iss", ISSUER)
                 .build();
 

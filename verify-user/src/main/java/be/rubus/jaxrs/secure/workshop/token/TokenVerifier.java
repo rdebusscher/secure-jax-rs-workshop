@@ -52,9 +52,10 @@ public class TokenVerifier {
             throw new UnexpectedException("iss has not the expected value");
         }
 
+        // iat and exp are in seconds, not milliseconds (spec requirement)
         long iat = json.getAsNumber("iat").longValue();
         long exp = json.getAsNumber("exp").longValue();
-        long now = new Date().getTime();
+        long now = new Date().getTime() / 1000;
         if (now < iat || now > exp) {
             throw new UnexpectedException("JWT is not valid (Time frame)");
         }
