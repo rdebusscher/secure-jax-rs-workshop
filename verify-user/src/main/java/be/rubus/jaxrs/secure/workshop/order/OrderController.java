@@ -20,11 +20,7 @@ public class OrderController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public Response sendOrder(@HeaderParam("Authorization") String authorizationHeader, Order order) {
-        User user = verifier.verifyToken(authorizationHeader);
-        if (!order.getUserId().equals(user.getId())) {
-            return Response.status(401).entity("userId doesn't match").build();
-        }
-        return Response.accepted("Order accepted").build();
+
     }
 
 }

@@ -13,18 +13,7 @@ import javax.ws.rs.core.Response;
 public class OrderClient {
 
     public static void main(String[] args) {
-        Client client = ClientBuilder.newClient();
-        client.register(SignatureWriterInterceptor.class);
-        client.register(SignatureInterceptor.class);
 
-        Order order = newOrder();
-
-        Response response = client.target("http://localhost:8080/protection/resources")
-                .path("order")
-                .request(MediaType.TEXT_PLAIN)
-                .post(Entity.entity(order, MediaType.APPLICATION_JSON_TYPE));
-
-        System.out.println(response.getStatus());
     }
 
     private static Order newOrder() {

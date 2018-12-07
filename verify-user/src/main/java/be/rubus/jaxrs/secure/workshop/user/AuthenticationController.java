@@ -25,13 +25,7 @@ public class AuthenticationController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     public String doAuthenticate(UsernamePassword usernamePassword) {
-        User user = userBoundary.findUser(usernamePassword);
 
-        if (user != null) {
-
-            return tokenCreator.createToken(user);
-        }
-        return null;
     }
 
 

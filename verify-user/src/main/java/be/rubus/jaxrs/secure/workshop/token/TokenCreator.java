@@ -23,52 +23,19 @@ public class TokenCreator {
     public static final String ISSUER = "http://someservice/verify-user";
 
     public String createToken(User user) {
-        try {
-            PrivateKey privateKey = readPrivateKey();
-            String json = createJSONString(user);
-            return createJWT(json, privateKey);
-        } catch (IOException | JOSEException | ParseException e) {
-            throw new UnexpectedException(e);
-        }
+
     }
 
     private String createJWT(String message, PrivateKey privateKey) throws JOSEException {
 
-        JWSSigner signer = new RSASSASigner(privateKey);
-
-        JWSHeader.Builder headerBuilder = new JWSHeader.Builder(JWSAlgorithm.RS256);
-        headerBuilder.keyID("someUniqueKey") // UUID in most cases
-                .type(JOSEObjectType.JWT);
-        JWSObject jwsObject = new JWSObject(headerBuilder.build(), new Payload(message));
-
-        jwsObject.sign(signer);
-
-        return jwsObject.serialize();
     }
 
     private String createJSONString(User user) {
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime exp = now.plusMinutes(30);
 
-        JsonObject json = Json.createObjectBuilder()
-                .add("id", user.getId())
-                .add("userName", user.getUserName())
-                .add("name", user.getName())
-                // The following are OpenIdConnect compliant claims.
-                // iat and exp are in seconds, not milliseconds (spec requirement)
-                .add("iat", now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() / 1000) // issued at
-                .add("exp", exp.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() / 1000) // expiration
-                .add("iss", ISSUER)
-                .build();
-
-        return json.toString();
     }
 
     private PrivateKey readPrivateKey() throws IOException, JOSEException, ParseException {
-        FileInputStream inputStream = new FileInputStream("/Users/rubus/rsa.priv.json");
-        String fileContent = new Scanner(inputStream).useDelimiter("\\Z").next();
-        inputStream.close();
-        return RSAKey.parse(fileContent).toPrivateKey();
+
     }
 
 }

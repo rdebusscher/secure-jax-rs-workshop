@@ -14,17 +14,11 @@ public class SignatureInterceptor implements ClientRequestFilter {
 
     @Override
     public void filter(ClientRequestContext requestContext) throws IOException {
-        handleDateHeader(requestContext);
 
-        URIInfo uriInfo = new URIInfo(requestContext.getMethod(), requestContext.getUri().getPath());
-        requestContext.setProperty(URIInfo.class.getName(), uriInfo);
     }
 
     private void handleDateHeader(ClientRequestContext requestContext) {
-        Date now = new Date();
-        String stringNow = new SimpleDateFormat(HEADER_DATE_FORMAT, Locale.US).format(now);
 
-        requestContext.getHeaders().add(HEADER_DATE, stringNow);
 
     }
 

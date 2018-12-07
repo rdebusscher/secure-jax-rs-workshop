@@ -21,24 +21,6 @@ public class SignatureWriterInterceptor implements WriterInterceptor {
     @Override
     public void aroundWriteTo(WriterInterceptorContext context) throws IOException, WebApplicationException {
 
-        OutputStream originalStream = context.getOutputStream();
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        context.setOutputStream(out);
-
-        context.proceed();
-
-        byte[] payload = out.toByteArray();
-        originalStream.write(payload);
-
-        try {
-            context.getHeaders().add("digest", DigestCalculator.calculateDigest(payload));
-        } catch (NoSuchAlgorithmException e) {
-            throw new UnexpectedException(e);
-        }
-
-        context.getHeaders().add("Signature", signatureCreator.createSignature(context).substring(10));
-        // Strip Signature
     }
 
 }
