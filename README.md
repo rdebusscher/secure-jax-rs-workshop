@@ -8,3 +8,6 @@ Cookbook and final solutions of Secure JAX-RS workshop.
 - jwk : reading and writing JWK files
 - verify-user : User identification with JWT (Large example)
 - http-signature : Http signature to protect content changes (Large example)
+
+
+See the branch **QuickStart** for the program structures, classes with the method signatures and some boilerplate code and classes in case you want to complete the workshop faster.
